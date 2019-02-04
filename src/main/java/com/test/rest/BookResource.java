@@ -26,14 +26,14 @@ public class BookResource {
     }
 
     @GET
-    @ApiOperation("list test objects")
+    @ApiOperation("list book objects")
     public Response list() {
         return Response.ok(this.bookBeanDAO.list()).build();
     }
 
     @GET
     @Path("/{id}")
-    @ApiOperation("get test object")
+    @ApiOperation("get book object")
     public Response get(@PathParam("id") Long id) {
         BookBean bean = this.bookBeanDAO.get(id);
         if (bean == null) {
@@ -44,7 +44,7 @@ public class BookResource {
 
     @POST
     @Consumes("application/json;charset=utf-8")
-    @ApiOperation("save test object")
+    @ApiOperation("save book object")
     public Response save(BookBean bean) {
         this.bookBeanDAO.save(bean);
         return Response.ok().build();
@@ -52,7 +52,7 @@ public class BookResource {
 
     @DELETE
     @Path("/{id}")
-    @ApiOperation("delete test object")
+    @ApiOperation("delete book object")
     public Response delete(@PathParam("id") Long id) {
         BookBean bean = this.bookBeanDAO.get(id);
         if (bean == null) {
@@ -60,6 +60,13 @@ public class BookResource {
         }
         this.bookBeanDAO.delete(bean);
         return Response.ok().build();
+    }
+    
+    @GET
+    @Path("/search/{query}")
+    @ApiOperation("get book objects according to criteria")
+    public Response search(@PathParam("query") String query) {
+        return Response.ok(this.bookBeanDAO.search(query)).build();
     }
     
 }

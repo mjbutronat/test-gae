@@ -14,6 +14,18 @@ angular.module('book')
                 $scope.load();
             });
         }
+        
+        $scope.delete = function(id) {
+            book.delete(id, function() {
+                $scope.load();
+            });
+        }
+        
+        $scope.search = function() {
+            book.search($scope.query, function (list) {
+                $scope.list = list.data;
+            });
+        }
 
         $scope.form = {};
 

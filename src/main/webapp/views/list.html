@@ -1,7 +1,21 @@
 <h3>List of books</h3>
-<div ng-repeat="item in list">
-    <a href="/#/{{item.id}}">{{item.name}}</a> - {{item.author}}
+<div>
+	<input id="query" ng-model="query"/>
+	<button ng-click="search()">Search</button>
 </div>
+
+<table style="width:50%">
+  <tr>
+    <th>Title</th>
+    <th>Author</th> 
+    <th>Delete</th>
+  </tr>  
+  <tr ng-repeat="item in list">
+    <th><a href="#/{{item.id}}">{{item.name}}</a></th>
+    <th>{{item.author}}</th> 
+    <th><button ng-click="delete(item.id)">X</button></th>    
+  </tr>
+</table>
 
 <h3>New book</h3>
 <div>

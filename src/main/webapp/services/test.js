@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('book')
-    .service('book', function ($http) {
+angular.module('test')
+    .service('test', function ($http) {
         return {
             list: function (success) {
-                return $http.get("/rest/book").then(success);
+                return $http.get("/rest/test").then(success);
             },
-            save: function (book, success) {
-                return $http.post("/rest/book", book).then(success);
+            save: function (test, success) {
+                return $http.post("/rest/test", test).then(success);
             }
         };
     });
