@@ -5,6 +5,7 @@
     <version>1</version>
 
     <!-- Allows App Engine to send multiple requests to one instance in parallel -->
+    <runtime>java8</runtime>
     <threadsafe>true</threadsafe>
 
     <!-- Configure java.util.logging and encoding-->

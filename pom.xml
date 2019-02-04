@@ -15,7 +15,7 @@
         <local.port>8080</local.port>
 
         <!-- Common configuration -->
-        <appengine.target.version>1.9.26</appengine.target.version>
+        <appengine.target.version>1.9.69</appengine.target.version>
         <appengine.pipeline.version>[0.2.7,0.2.9]</appengine.pipeline.version>
         <appengine.app.version>1</appengine.app.version>
         <swagger.rest.package>com.test.rest</swagger.rest.package>
@@ -29,8 +29,9 @@
         <mockito.version>1.9.0</mockito.version>
 
         <!-- Compiler configuration -->
-        <java.source>1.7</java.source>
-        <java.target>1.7</java.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+  		<maven.compiler.target>1.8</maven.compiler.target>
+  		<failOnMissingWebXml>false</failOnMissingWebXml>
 
         <!-- Plugins versions -->
         <maven.minimum.version>3.1.0</maven.minimum.version>
@@ -126,9 +127,10 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+      		<type>jar</type>
+      		<scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
@@ -179,6 +181,12 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5-20081211</version>
         </dependency>
+        <dependency>
+      	  <groupId>com.google.appengine</groupId>
+	      <artifactId>appengine-tools-sdk</artifactId>
+	      <version>1.9.69</version>
+	      <scope>test</scope>
+    	</dependency>
     </dependencies>
     <build>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
@@ -231,6 +239,11 @@
                     <fullScanSeconds>2</fullScanSeconds>
                 </configuration>
             </plugin>
+            <plugin>
+			   <groupId>com.google.cloud.tools</groupId>
+			   <artifactId>appengine-maven-plugin</artifactId>
+			   <version>1.3.2</version>
+			</plugin>
         </plugins>
     </build>
 </project>
